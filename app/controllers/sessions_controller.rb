@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    icnlude CurrentUserConcern
+    include CurrentUserConcern
     def create
         user = User.find_by(username: params['user']['username']).try(:authenticate, params['user']['password'])
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
         end
     end
 
-    def logged_out
+    def logout
         reset_session
         render json: {status:200, logged_out: true}
     end

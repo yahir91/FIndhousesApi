@@ -1,0 +1,15 @@
+current directory: /home/yahir/microverse/Final Project/houses/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+/home/yahir/.rvm/rubies/ruby-2.6.7/bin/ruby -I /home/yahir/.rvm/rubies/ruby-2.6.7/lib/ruby/2.6.0 -r ./siteconf20210421-139212-1idd9dv.rb extconf.rb
+creating Makefile
+
+current directory: /home/yahir/microverse/Final Project/houses/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/yahir/microverse/Final Project/houses/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/yahir/microverse/Final Project/houses/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20210421-139212-1ohbmyl

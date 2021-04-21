@@ -1,0 +1,19 @@
+%h1= api_name
+
+- if guides.any?
+  %h2 Guides
+  %ul.guides
+    - guides.each do |guide|
+      %li.guide
+        = link_to guide.title, "/#{guide.href}"
+
+- index.resources.each do |resource|
+  .resource
+    %h2= resource.name
+    - if resource.explanation?
+      %p.explanation
+        = resource.explanation
+    %ul.examples
+      - resource.examples.each do |example|
+        %li.example
+          = link_to example.description, "/#{example.href}"

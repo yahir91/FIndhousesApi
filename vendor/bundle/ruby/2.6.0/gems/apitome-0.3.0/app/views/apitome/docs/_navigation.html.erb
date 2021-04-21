@@ -1,0 +1,32 @@
+<ul class="nav sidenav">
+  <% if Apitome.configuration.readme %>
+    <li>
+      <% if Apitome.configuration.single_page %>
+        <a href="#readme"><%= t(:readme, scope: :apitome) %></a>
+      <% else %>
+        <a href="<%= Apitome.configuration.mount_at %>"><%= t(:readme, scope: :apitome) %></a>
+      <% end %>
+    </li>
+  <% end %>
+  <% resources.each do |resource| %>
+    <li>
+      <% if Apitome.configuration.single_page %>
+        <a href="#<%= id_for(resource['name']) %>"><%= resource['name'] %></a>
+        <ul class="nav">
+          <% resource['examples'].each do |example| %>
+            <li><%= link_to example['description'], "##{id_for(example['link'])}" %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= link_to resource['name'], resource_link(resource), class: "#{link_active?(resource_link(resource)) ? 'active' : ''}" %>
+        <ul class="nav">
+          <% resource['examples'].each do |example| %>
+            <li class="<%= link_active?(example_link(example)) ? 'active' : '' %>">
+              <%= link_to example['description'], example_link(example) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title= api_name
+
+    - css_files.each do |file|
+      %link{:rel => "stylesheet", :href => file}
+
+    %script(src="#{url_location}/js/jquery-1-7-2.js")
+    %script(src="#{url_location}/js/codemirror.js")
+    %script(src="#{url_location}/js/mode/css/css.js")
+    %script(src="#{url_location}/js/mode/htmlmixed/htmlmixed.js")
+    %script(src="#{url_location}/js/mode/javascript/javascript.js")
+    %script(src="#{url_location}/js/mode/xml/xml.js")
+
+    :css
+      td.required .name:after {
+        float: right;
+        content: "required";
+        font-weight: normal;
+        color: #F08080;
+      }
+
+      p {
+        padding: 15px;
+        font-size: 130%;
+      }
+
+  %body
+    .container
+      = yield

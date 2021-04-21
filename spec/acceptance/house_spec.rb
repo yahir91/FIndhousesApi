@@ -17,15 +17,4 @@ resource "Houses" do
       expect(status).to eq 200
     end
   end
-
-  post '/houses' do
-    parameter :title, 'title'
-    parameter :description, 'description'
-    parameter :rent, 1
-    # parameter :image, :upload => @file
-
-    example_request 'create a book' do
-      expect(status).to eq(200)
-    end
-  end
 end

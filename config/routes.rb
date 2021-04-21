@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Raddocs::App => "/docs"
   resources :sessions, only: [:create]
   resources :registration, only: [:create]
   resources :houses, only: [:create, :index, :show]

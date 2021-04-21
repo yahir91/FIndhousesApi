@@ -68,3 +68,5 @@ gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 gem 'hirb', '~> 0.7.3'
 gem 'rspec_api_documentation'
 gem "apitome"
+gem 'raddocs'
+gem "factory_bot_rails"

@@ -4,9 +4,6 @@ class House < ApplicationRecord
   has_many :users, :through => :favorites
   has_one_attached :image
 
-  validates :image, {
-    presence: true
-  }
   def get_image_url
     url_for(self.image)
   end

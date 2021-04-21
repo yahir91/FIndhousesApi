@@ -1,0 +1,17 @@
+{
+  "resources": [
+    {
+      "name": "Houses",
+      "explanation": "Orders resource",
+      "examples": [
+        {
+          "description": "Get all houses",
+          "link": "houses/get_all_houses.json",
+          "groups": "all",
+          "route": "/houses",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@ class HousesController < ApplicationController
 
   def show
     house = House.find(params[:id])
-    # @current_user = User.find(session[:user_id])
+    @current_user = User.find(session[:user_id])
     if house
       render json: {
         house: house,

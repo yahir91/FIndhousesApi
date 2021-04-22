@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_user, only: %i[create index destroy]
+  include CurrentUserConcern
 
   def create
     favorite = @current_user.favorites.create!(house_id: params['house']['id'])
@@ -34,14 +34,6 @@ class FavoritesController < ApplicationController
       render json: {
         status: 'deleted'
       }
-    end
-  end
-
-  private
-
-  def set_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
     end
   end
 end

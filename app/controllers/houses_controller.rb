@@ -1,4 +1,6 @@
 class HousesController < ApplicationController
+  include CurrentUserConcern
+
   def create
     house = House.create!(post_params())
 
@@ -21,7 +23,6 @@ class HousesController < ApplicationController
 
   def show
     house = House.find(params[:id])
-    @current_user = User.find(session[:user_id])
     if house
       render json: {
         house: house,

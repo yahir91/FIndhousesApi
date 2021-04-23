@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
 
     if favorite
       render json: {
-        status: :created,
+        status: :created
       }
     else
       render json: { status: 500 }
@@ -29,11 +29,11 @@ class FavoritesController < ApplicationController
 
   def destroy
     favorite = @current_user.favorites.find_by(house_id: params[:id])
-    if favorite
-      favorite.delete
-      render json: {
-        status: 'deleted'
-      }
-    end
+    return unless favorite.nil?
+
+    favorite.delete
+    render json: {
+      status: 'deleted'
+    }
   end
 end

@@ -2,7 +2,7 @@ class HousesController < ApplicationController
   before_action :authenticate_and_set_user
 
   def create
-    house = House.create!(post_params())
+    house = House.create!(post_params)
 
     if house
       render json: {
@@ -23,16 +23,18 @@ class HousesController < ApplicationController
 
   def show
     house = House.find(params[:id])
-    if house
-      render json: {
-        house: house,
-        url: url_for(house.image),
-        favorite: Favorite.where(user_id: current_user, house_id: house.id).first
-      }
-    end
+    return unless house.nil?
+
+    render json: {
+      house: house,
+      url: url_for(house.image),
+      favorite: Favorite.where(user_id: current_user, house_id: house.id).first
+    }
   end
 
-  private def post_params
+  private
+
+  def post_params
     params.permit(:title, :description, :rent, :image)
   end
 end

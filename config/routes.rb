@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
   root to: 'static#home'
+  api_guard_routes for: 'users', controller: {
+    registration: 'users/registration',
+    authentication: 'users/authentication',
+    passwords: 'users/passwords',
+    tokens: 'users/tokens'
+  }
 end

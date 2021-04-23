@@ -62,7 +62,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 gem 'hirb', '~> 0.7.3'
@@ -72,3 +71,5 @@ gem 'raddocs'
 gem "factory_bot_rails"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'open-uri'
+gem 'api_guard'
+gem 'bcrypt', '~> 3.1.7'

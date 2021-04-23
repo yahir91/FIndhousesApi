@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
-  include CurrentUserConcern
+  before_action :authenticate_and_set_user
 
   def create
-    favorite = @current_user.favorites.create!(house_id: params['house']['id'])
+    favorite = current_user.favorites.create!(house_id: params['house']['id'])
 
     if favorite
       render json: {
@@ -16,9 +16,9 @@ class FavoritesController < ApplicationController
   def index
     if @current_user
       render json: {
-        favorites_houses: @current_user.houses,
-        favorite_urls: @current_user.houses.map { |house| url_for(house.image) },
-        user: @current_user
+        favorites_houses: current_user.houses,
+        favorite_urls: current_user.houses.map { |house| url_for(house.image) },
+        user: current_user
       }
     else
       render json: {

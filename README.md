@@ -1,6 +1,6 @@
 # Find Your House Backend
 
-##### This is a back-end API, which provides data to [this application](https://github.com/jessicafarias/tracking_app/tree/feature/app) that I developed.
+##### This is a back-end API, which provides data to [this application](https://github.com/yahir91/frontend_houses) that I developed.
 
 # Tracking app
 
@@ -33,15 +33,12 @@ To get a local copy up and running follow these simple example steps.
 * Clone this repo:
   - Clone with SSH:
   ```
-    git@github.com:jessicafarias/tracking_app_api.git
+    git@github.com:yahir91/FIndhousesApi.git
   ```
   - Clone with HTTPS
   ```
-    https://github.com/jessicafarias/tracking_app_api.git
+    https://github.com/yahir91/FIndhousesApi.git
   ```
-    
- - cd to tracking_app_api.git
-
 
 ### Setup
 
@@ -53,17 +50,23 @@ $ bundle install
 
 Start the local webserver:
 
-```$ rails s -p 400``` will open the project at local webserver at http://localhost:4000/ 
+```$ rails s -p 4000``` will open the project at local webserver at http://localhost:4000/ 
 
-### Using | Requests examples using JS
+### Using | Requests examples using JS with
 
 for all request you will need base URL:
-const baseUrl = `https://jesapi.herokuapp.com`
+const baseUrl = `https://houses-api-yahir.herokuapp.com`
 
 
-#### Create New task
+#### Create New House
 ```
-const url = `${baseUrl}/tasks`;
+data = {
+  title,
+  description,
+  rent,
+  file
+}
+const url = `${baseUrl}/houses`;
 const config = `{
     method: 'POST',
     mode: 'cors',
@@ -71,14 +74,13 @@ const config = `{
       'Content-Type': 'application/json',
       Authorization: ` Bearer ${token} `,
     },
-    redirect: 'follow',
     body: JSON.stringify(data),
   }`
 ```
 
-#### Get all tasks
+#### Get all Houses
 ```
-const url = `${baseUrl}/tasks/`;
+const url = `${baseUrl}/houses`;
 const config = `{
     method: 'GET',
     mode: 'cors',
@@ -87,43 +89,60 @@ const config = `{
     }`
 ```
 
-#### Get tasks created today
+#### Get all Favorites Houses (Need to be log in)
 ```
-const url = `${baseUrl}/tasks/today`;
+const url = `${baseUrl}/favorites`;
 const config = `{
     method: 'GET',
     mode: 'cors',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token} `,
     }`
 ```
-
-#### Get tasks created yesterday
-
+#### Get a House
 ```
-const url = `${baseUrl}/tasks/yesterday`;
+const url = `${baseUrl}/houses/id`;
 const config = `{
     method: 'GET',
     mode: 'cors',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token} `,
     }`
 ```
 
-#### Get tasks selecting the date
-
+#### Add house to favorite (Need to be log in)
 ```
-const url = `${baseUrl}/tasks/30-03-2021`;
+data ={
+  house: params[id]
+}
+const url = `${baseUrl}/favorites`;
 const config = `{
-    method: 'GET',
+    method: 'POST',
     mode: 'cors',
     headers: {
       Authorization: `Bearer ${token}`,
-    }`
+    }`,
+    body: JSON.stringify(data), 
+```
+#### Remove house from favorite (Need to be log in)
+```
+const url = `${baseUrl}/favorites/id`;
+const config = `{
+    method: 'DELETE',
+    mode: 'cors',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }`,
 ```
 
 #### Create User and Session (Sing up)
 ```
+data = {
+  email,
+  name,
+  password,
+  password_confirmation
+}
 const url = `${baseUrl}/users/sign_up`;
 const config = `{
     method: 'POST',
@@ -136,6 +155,10 @@ const config = `{
 
 #### Create Session (Login)
 ```
+data = {
+  email,
+  password
+}
 const url = `${baseUrl}/users/sign_in`;
 const config = `{
     method: 'POST',
@@ -146,55 +169,29 @@ const config = `{
   }`
 ```
 
-#### Destroy session (Sing out)
+#### Destroy session (Sing out, Need to be log in ) 
 ```
 const apiUrl = `${baseUrl}/users/sign_out`;
 const config = `{
-    method: 'POST',
+    method: 'DELETE',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     redirect: 'follow',
-    body: JSON.stringify(data),
   }`
 ```
 
+## Authors
 
-## Author
-
-## 👤 Jessica Michelle Farías Rosado:
+## 👤 **Yahir Cardona**
 Working as a FullStack developer on this project.
 
- [![Website](https://img.shields.io/badge/-Website-black?style=for-the-badge&logo=Julia&logoColor=white)](https://jessicafarias.github.io/)
+ [![Website](https://img.shields.io/badge/-Website-black?style=for-the-badge&logo=Julia&logoColor=white)](https://yahir91.github.io/yahir-cardona.github.io/)
 
- [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jessica-michelle-farias-rosado/)
-
- [![EMAIL](https://img.shields.io/badge/-EMAIL-D14836?style=for-the-badge&logo=Mail.Ru&logoColor=white)](mailto:jessica.farias.rosado@gmail.com)
- 
- [![TWITTER](https://img.shields.io/badge/-TWITTER-1DA1F2?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/FariasRosado)
-
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/jessicafarias/tracking_app_api/issues).
+ [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/yahir-cardona/)
 
 ## Show your support
 
 Give a :star: if you like this project!
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jessicafarias/tracking_app_api.svg?style=flat-square
-[contributors-url]: https://github.com/jessicafarias/tracking_app_api/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jessicafarias/tracking_app_api.svg?style=flat-square
-[forks-url]: https://github.com/jessicafarias/tracking_app_api/network/members
-[stars-shield]: https://img.shields.io/github/stars/jessicafarias/tracking_app_api.svg?style=flat-square
-[stars-url]: https://github.com/jessicafarias/tracking_app_api/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jessicafarias/tracking_app_api.svg?style=flat-square
-[issues-url]: https://github.com/jessicafarias/tracking_app_api/issues
 
 ## 📝 License
 

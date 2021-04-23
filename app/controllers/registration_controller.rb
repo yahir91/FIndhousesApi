@@ -1,3 +1,3 @@
 # class RegistrationController < ApplicationController
-  
+
 # end

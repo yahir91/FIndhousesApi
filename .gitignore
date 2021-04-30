@@ -27,3 +27,6 @@
 /config/master.key
 
 /config/cloudinary.yml
+
+# Ignore application configuration
+/config/application.yml

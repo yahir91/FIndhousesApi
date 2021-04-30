@@ -1,4 +1,5 @@
 class HousesController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_and_set_user
 
   def create
@@ -15,21 +16,25 @@ class HousesController < ApplicationController
   end
 
   def index
+    houses_urls = houses_urls()
     render json: {
       house: House.all,
-      urls: House.all.map { |house| url_for(house.image) }
+      urls: houses_urls
     }
   end
 
   def show
     house = House.find(params[:id])
-    return unless house.nil?
+    if house
 
-    render json: {
-      house: house,
-      url: url_for(house.image),
-      favorite: Favorite.where(user_id: current_user, house_id: house.id).first
-    }
+      render json: {
+        house: house,
+        url: url_for(house.image),
+        favorite: Favorite.where(user_id: current_user, house_id: house.id).first
+      }
+    else
+      render json: { status: 500 }
+    end
   end
 
   private

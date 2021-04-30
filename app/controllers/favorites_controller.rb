@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_and_set_user
 
   def create
@@ -14,10 +15,11 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    if @current_user
+    fav_urls = image_urls(current_user)
+    if current_user
       render json: {
         favorites_houses: current_user.houses,
-        favorite_urls: current_user.houses.map { |house| url_for(house.image) },
+        favorite_urls: fav_urls,
         user: current_user
       }
     else
@@ -28,12 +30,15 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = @current_user.favorites.find_by(house_id: params[:id])
-    return unless favorite.nil?
+    favorite = favorites_houses(current_user, params[:id])
+    if favorite
 
-    favorite.delete
-    render json: {
-      status: 'deleted'
-    }
+      favorite.delete
+      render json: {
+        status: 'deleted'
+      }
+    else
+      render json: { status: 500 }
+    end
   end
 end

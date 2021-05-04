@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
         status: :created
       }
     else
-      render json: { status: 500 }
+      render json: favorite.errors, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class FavoritesController < ApplicationController
         status: 'deleted'
       }
     else
-      render json: { status: 500 }
+      render json: favorite.errors, status: :unprocessable_entity
     end
   end
 end

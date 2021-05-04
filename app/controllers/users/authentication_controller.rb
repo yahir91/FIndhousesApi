@@ -8,7 +8,8 @@ module Users
         create_token_and_set_header(resource, resource_name)
         render json: {
           token: headers['Access-Token'],
-          status: 'success'
+          status: 'success',
+          user: resource
         }
       else
         render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))

@@ -10,4 +10,8 @@ module ApplicationHelper
   def houses_urls
     House.all.map { |house| url_for(house.image) }
   end
+
+  def user_fav(user_id, house_id)
+    Favorite.where(user_id: user_id, house_id: house_id).first
+  end
 end

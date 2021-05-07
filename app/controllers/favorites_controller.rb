@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    fav_urls = image_urls(current_user)
+    fav_urls = current_user.houses.pluck(:url)
     if current_user
       render json: {
         favorites_houses: current_user.houses,
@@ -29,8 +29,14 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def show
+    render json: {
+      favorite: Favorite.fav_toogle(current_user, params[:id]).first
+    }
+  end
+
   def destroy
-    favorite = favorites_houses(current_user, params[:id])
+    favorite = current_user.favorites.user_favorites(params[:id]).first
     if favorite
 
       favorite.delete

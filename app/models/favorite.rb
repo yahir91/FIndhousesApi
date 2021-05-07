@@ -3,9 +3,6 @@ class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :house
 
-  scope :user_favorites, ->(id) { where(house_id: id) }
-
-  # def favorites_houses(user, id)
-  #   user.favorites.find_by(house_id: id)
-  # end
+  scope :user_favorites, ->(id) { where('house_id = ?', id) }
+  scope :fav_toogle, ->(user, house) { where(user_id: user, house_id: house) }
 end

@@ -8,7 +8,7 @@ class HousesController < ApplicationController
     if house
       render json: {
         status: :created,
-        image_url: url_for(house.image)
+        image_url: house.url
       }
     else
       render json: house.errors, status: :unprocessable_entity
@@ -16,21 +16,19 @@ class HousesController < ApplicationController
   end
 
   def index
-    houses_urls = houses_urls()
     render json: {
       house: House.all,
-      urls: houses_urls
+      urls: House.pluck(:url)
     }
   end
 
   def show
     house = House.find(params[:id])
-    favorite_house = user_fav(current_user, house.id)
+
     if house
       render json: {
         house: house,
-        url: url_for(house.image),
-        favorite: favorite_house
+        url: house.image.service_url
       }
     else
       render json: house.errors, status: :unprocessable_entity

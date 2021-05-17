@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount Raddocs::App => "/docs"
+  resources :houses, only: [:create, :index, :show]
+  resources :favorites, only: [:create, :index, :destroy, :show]
+  api_guard_routes for: 'users', controller: {
+    registration: 'users/registration',
+    authentication: 'users/authentication',
+    passwords: 'users/passwords',
+    tokens: 'users/tokens'
+  }
 end

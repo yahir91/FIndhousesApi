@@ -1,0 +1,96 @@
+{
+  "resource": "Houses",
+  "resource_explanation": "Orders resource",
+  "http_method": "GET",
+  "route": "/houses",
+  "description": "Get all houses",
+  "explanation": null,
+  "parameters": [
+    {
+      "with_example": true,
+      "name": "one_level_arr",
+      "description": " one level arr"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/houses?one_level_arr[]=value1&one_level_arr[]=value2&one_level_arr[]=value3",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "one_level_arr": [
+          "value1",
+          "value2",
+          "value3"
+        ]
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[binary data]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"1043f3a7a9f2b7e671ad28770de7421a\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "ff7a8489-128b-4edc-acf2-2565539ac436",
+        "X-Runtime": "0.011179",
+        "Vary": "Origin",
+        "Content-Length": "22"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:4000/houses?one_level_arr[]=value1&one_level_arr[]=value2&one_level_arr[]=value3\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    },
+    {
+      "request_method": "GET",
+      "request_path": "/houses?one_level_arr[]=value1&one_level_arr[]=value2&one_level_arr[]=value3",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "one_level_arr": [
+          "value1",
+          "value2",
+          "value3"
+        ]
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[binary data]",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Download-Options": "noopen",
+        "X-Permitted-Cross-Domain-Policies": "none",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"1043f3a7a9f2b7e671ad28770de7421a\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "937d1fe7-710b-4744-87ca-3902dd73ba6d",
+        "X-Runtime": "0.001369",
+        "Vary": "Origin",
+        "Content-Length": "22"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:4000/houses?one_level_arr[]=value1&one_level_arr[]=value2&one_level_arr[]=value3\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}
